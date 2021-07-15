@@ -5,7 +5,7 @@ import { StyleSheet } from 'react-native';
 import {View, Text} from 'react-native';
 
 
-export default function TabOneScreen() {
+export default function Classes() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Classes</Text>
