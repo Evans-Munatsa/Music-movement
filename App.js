@@ -39,7 +39,7 @@
 import React, { useState } from 'react';
 
 // React navigation stack
-import RootStack from './navigators/RootStack';
+import RootStack from './navigation/RootStack';
 
 // apploading
 import AppLoading from 'expo-app-loading';

@@ -44,7 +44,7 @@ const Welcome = () => {
     <>
       <StatusBar style="light" />
       <InnerContainer>
-        <WelcomeImage resizeMode="cover" source={require('./../assets/img/music-logo.png')} />
+        {/* <WelcomeImage resizeMode="cover" source={require('./../assets/img/music-logo.png')} /> */}
 
         <WelcomeContainer>
           <PageTitle welcome={true}>Welcome!</PageTitle>
