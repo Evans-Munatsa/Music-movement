@@ -10,7 +10,8 @@ const { darkLight, brand, primary, tertiary, secondary } = Colors;
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-// import BottomTabNavigator from './BottonNavigation';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 
 // screens
 import Login from '../screens/Login';
@@ -20,16 +21,6 @@ import Classes from '../screens/Classes';
 import Streaming from '../screens/Stream'; 
 import Videos from '../screens/Videos'; 
 
-
-// export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
-//   return (
-//     <NavigationContainer
-//       linking={LinkingConfiguration}
-//       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-//       <RootNavigator />
-//     </NavigationContainer>
-//   );
-// }
 
 const Tabs = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -43,17 +34,59 @@ const RootStack = () => {
       {({ storedCredentials }) => (
         <NavigationContainer style={{ backgroundColor: 'red' }}>
           <Tabs.Navigator
-            screenOptions={{
-              headerStyle: {
-                backgroundColor: 'transparent',
+            // screenOptions={{
+            //   headerStyle: {
+            //     backgroundColor: 'transparent',
+            //   },
+            //   headerTintColor: tertiary,
+            //   headerTransparent: true,
+            //   headerTitle: '',
+            //   headerLeftContainerStyle: {
+            //     paddingLeft: 20,
+            //   },
+            // }}
+
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ focused, color, size }) => {
+                if (route.name === 'Classroom') {
+                  return (
+                    <Ionicons
+                      name={
+                        focused
+                          ? 'ios-home'
+                          : 'ios-home'
+                      }
+                      size={size}
+                      color={color}
+                    />
+                  );
+                } else if (route.name === 'Videos') {
+                  return (
+                    <Ionicons
+                      name={focused ? 'ios-list' : 'ios-videocam'}
+                      size={size}
+                      color={color}
+                    />
+                  );
+                } else if (route.name === 'Stream') {
+                  return (
+                    <Ionicons
+                      name={focused ? 'ios-list' : 'ios-film'}
+                      size={size}
+                      color={color}
+                    />
+                  );
+                } else if (route.name === 'Profile') {
+                  return (
+                    <Ionicons
+                      name={focused ? 'ios-list' : 'person'}
+                      size={size}
+                      color={color}
+                    />
+                  );
+                }
               },
-              headerTintColor: tertiary,
-              headerTransparent: true,
-              headerTitle: '',
-              headerLeftContainerStyle: {
-                paddingLeft: 20,
-              },
-            }}
+            })}
           >
             {storedCredentials ? (
               <Tabs.Screen options={{ headerTintColor: primary, }}name="Classroom" component={Classes}/>
@@ -65,7 +98,8 @@ const RootStack = () => {
             )}
             <Tabs.Screen name="Stream" component={Streaming}/>
             <Tabs.Screen name="Videos" component={Videos}/>
-            <Tabs.Screen name="Profile" component={Welcome}/>
+
+            <Tabs.Screen name="Profile" component={Welcome} />
           </Tabs.Navigator>
         </NavigationContainer>
       )}
@@ -74,3 +108,4 @@ const RootStack = () => {
 };
 
 export default RootStack;
+
