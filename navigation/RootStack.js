@@ -63,7 +63,7 @@ const RootStack = () => {
                 } else if (route.name === 'Videos') {
                   return (
                     <Ionicons
-                      name={focused ? 'ios-list' : 'ios-videocam'}
+                      name={focused ? 'ios-videocam' : 'ios-videocam'}
                       size={size}
                       color={color}
                     />
@@ -71,7 +71,7 @@ const RootStack = () => {
                 } else if (route.name === 'Stream') {
                   return (
                     <Ionicons
-                      name={focused ? 'ios-list' : 'ios-film'}
+                      name={focused ? 'ios-film' : 'ios-film'}
                       size={size}
                       color={color}
                     />
@@ -79,7 +79,7 @@ const RootStack = () => {
                 } else if (route.name === 'Profile') {
                   return (
                     <Ionicons
-                      name={focused ? 'ios-list' : 'person'}
+                      name={focused ? 'ios-person' : 'person'}
                       size={size}
                       color={color}
                     />
