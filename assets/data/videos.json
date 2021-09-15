@@ -1,0 +1,49 @@
+[{
+  "id": "1",
+  "createdAt": "5 months ago",
+  "title": "5 Senses - Music Movement ",
+  "thumbnail": "https://i.ytimg.com/vi/c3lIauT-E3A/hqdefault.jpg",
+  "videoUrl": "",
+  "duration": 384,
+  "user": {
+    "name": "Music Movement Organisation NPC",
+    "image": "https://yt3.ggpht.com/BX3Tnxk8IB40gwF7SY1iymR2wx_K58yccQSqRnezPg6LWimymJxmyApQLke5QMmuJg9uNlWoMA=s48-c-k-c0x00ffffff-no-rj"
+  },
+  "views": 179
+}, {
+  "id": "2",
+  "createdAt": "2 months ago",
+  "title": "🔴 Build the Uber clone in React Native (Tutorial for Beginners)",
+  "thumbnail": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/thumbnails/thumbnail2.jpeg",
+  "videoUrl": "",
+  "duration": 584,
+  "user": {
+    "name": "Vadim Savin",
+    "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg"
+  },
+  "views": 257000
+}, {
+  "id": "3",
+  "createdAt": "2 months ago",
+  "title": "How Graham Stephan makes $4,578,896.32 a year on YouTube",
+  "thumbnail": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/thumbnails/thumbnail3.jpeg",
+  "videoUrl": "",
+  "duration": 584,
+  "user": {
+    "name": "Graham Stephan",
+    "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/graham.jpg"
+  },
+  "views": 257000
+}, {
+  "id": "3",
+  "createdAt": "2 months ago",
+  "title": "My One Month Bitcoin Mining Journey",
+  "thumbnail": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/thumbnails/thumbnail4.jpeg",
+  "videoUrl": "",
+  "duration": 584,
+  "user": {
+    "name": "Biahaze",
+    "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/biahaze.jpg"
+  },
+  "views": 257000
+}]

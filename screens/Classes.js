@@ -1,34 +1,34 @@
 import * as React from 'react';
-import { StyleSheet, FlatList, Text, View, Image, StatusBar, SafeAreaView } from 'react-native';
+import { StyleSheet, FlatList, Text, View, Image, StatusBar, SafeAreaView,TouchableOpacity } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
-
 
 const DATA = [
   {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'Singing Lesson',
+    "id": "1",
+    "name": "OCEANS",
+    "theme": "Lesson Theme",
+    "photo": "https://images.unsplash.com/photo-1519076976365-9c64dbd98317?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1041&q=80"
   },
   {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Bass Guiter Lesson',
+    "id": "2",
+    "name": "OCEANS 2",
+    "theme": "Lesson Theme",
+    "photo": "https://images.unsplash.com/photo-1471478331149-c72f17e33c73?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80"
   },
   {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Jazz History',
+    "id": "3",
+    "name": "OCEANS 3",
+    "theme": "Lesson Theme",
+    "photo": "https://images.unsplash.com/photo-1507838153414-b4b713384a76?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
   },
   {
-    id: '58694a0f-3da1-471f-bd96-145571e29d75',
-    title: 'Drums History',
+    "id": "4",
+    "name": "OCEANS 4",
+    "theme": "Lesson Theme",
+    "photo": "https://images.unsplash.com/photo-1540593463874-59835505e99d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
   },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d76',
-    title: 'Singing History',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d77',
-    title: 'Dance',
-  },
-];
+]
+
 
 const Item = ({title}) => (
   <View style={styles.item}>
@@ -38,76 +38,62 @@ const Item = ({title}) => (
 
 
 
-
 export default function Classes() {
 
-  const renderItem = ({ item }) => (
-    <Item title={item.title} />
-  );
-
-  // return (
-
-  //   <Card>
-  //     <Card.Title>HELLO WORLD</Card.Title>
-  //     <Card.Divider/>
-  //     <Card.Image source={require('../assets/img/music-logo.png')}>
-  //       <Text style={{marginBottom: 10}}>
-  //         The idea with React Native Elements is more about component structure than actual design.
-  //       </Text>
-  //       <Button
-  //         icon={<Icon name='code' color='#ffffff' />}
-  //         buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-  //         title='VIEW NOW' />
-  //     </Card.Image>
-  //   </Card>
-    
-  // );
-
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <FlatList
         data={DATA}
-        renderItem={renderItem}
+        renderItem={({ item }) => <Item item={item}/>}
         keyExtractor={item => item.id}
+        renderItem={({ item, index }) => {
+          return (
+            <View style={styles.listItem}>
+              <Image source={{uri:item.photo}}  style={styles.picture} />
+              <View style={{alignItems:"center",flex:1}}>
+                <Text style={styles.title}>{item.name}</Text>
+                <Text style={styles.theme}>{item.theme}</Text>
+              </View>
+              {/* <TouchableOpacity style={{height:50,width:50, justifyContent:"center",alignItems:"center"}}>
+                <Text style={{color:"green"}}>Call</Text>
+              </TouchableOpacity> */}
+            </View>
+          )
+        }}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  // card: {
-  //   borderRadius: 10,
-  // },
-  // container: {
-  //   flex: 1,
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  // },
-  // title: {
-  //   fontSize: 20,
-  //   fontWeight: 'bold',
-  // },
-  // separator: {
-  //   marginVertical: 30,
-  //   height: 1,
-  //   width: '80%',
-  // },
-
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
+    backgroundColor: '#F7F7F7',
+    marginTop:80
   },
-  item: {
-    backgroundColor: '#000',
-    padding: 50,
-    marginVertical: 8,
-    marginHorizontal: 16,
-    borderRadius: 10,
+  listItem:{
+    margin:10,
+    padding:10,
+    backgroundColor:"#FFF",
+    width:"90%",
+    flex:1,
+    alignSelf:"center",
+    flexDirection:"row",
+    borderRadius:5
   },
   title: {
-    fontSize: 32,
-    color: '#ffff',
-    fontWeight: 'bold',
-    fontStyle: 'normal',
+    fontWeight:"bold",
+    fontSize: 20,
+    paddingTop: 30,
+    color: "black"
   },
+  theme: {
+    color: 'blue',
+    paddingTop: 5,
+  },
+  picture: {
+    width:150,
+    height:100,
+    borderRadius:5
+  }
 });

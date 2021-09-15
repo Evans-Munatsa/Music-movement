@@ -27,6 +27,7 @@ const Stack = createStackNavigator();
 
 // credentials context
 import { CredentialsContext } from '../components/CredentialsContext';
+import { Tab } from 'react-native-elements/dist/tab/Tab';
 
 const RootStack = () => {
   return (
@@ -96,9 +97,9 @@ const RootStack = () => {
                 <Tabs.Screen name="Signup" component={Signup} />
               </>
             )}
+            <Tabs.Screen name="Classes" component={Classes} />
             <Tabs.Screen name="Stream" component={Streaming}/>
             <Tabs.Screen name="Videos" component={Videos}/>
-
             <Tabs.Screen name="Profile" component={Welcome} />
           </Tabs.Navigator>
         </NavigationContainer>
