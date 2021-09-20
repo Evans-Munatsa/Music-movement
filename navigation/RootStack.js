@@ -20,6 +20,7 @@ import Welcome from '../screens/Welcome';
 import Classes from '../screens/Classes'; 
 import Streaming from '../screens/Stream'; 
 import Videos from '../screens/Videos'; 
+import Grades from '../screens/Grades';
 
 
 const Tabs = createBottomTabNavigator();
@@ -85,6 +86,8 @@ const RootStack = () => {
             {/* <Tabs.Screen name="Classroom" component={Classes} /> */}
             <Tabs.Screen name="Stream" component={Streaming}/>
             <Tabs.Screen name="Videos" component={Videos}/>
+            <Tabs.Screen name="Grades" component={Grades}/>
+
             {/* <Tabs.Screen name="Profile" component={Welcome} /> */}
             
           </Tabs.Navigator>
