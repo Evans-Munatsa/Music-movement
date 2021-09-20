@@ -1,15 +1,16 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
-
-
-import {View, Text} from 'react-native';
+import { StyleSheet, View, Text, Image, FlatList } from 'react-native';
+import VideoListItem from '../components/VideoListItem/Index'
+import videos from '../assets/data/videos.json';
 
 
 export default function Videos() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Videos</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+    <View>
+      <FlatList
+        data={videos}
+        renderItem={({ item}) => <VideoListItem video={item} />}
+      />  
     </View>
   );
 }

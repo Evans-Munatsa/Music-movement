@@ -27,6 +27,7 @@ const Stack = createStackNavigator();
 
 // credentials context
 import { CredentialsContext } from '../components/CredentialsContext';
+import { Tab } from 'react-native-elements/dist/tab/Tab';
 
 const RootStack = () => {
   return (
@@ -34,36 +35,21 @@ const RootStack = () => {
       {({ storedCredentials }) => (
         <NavigationContainer style={{ backgroundColor: 'red' }}>
           <Tabs.Navigator
-            // screenOptions={{
-            //   headerStyle: {
-            //     backgroundColor: 'transparent',
-            //   },
-            //   headerTintColor: tertiary,
-            //   headerTransparent: true,
-            //   headerTitle: '',
-            //   headerLeftContainerStyle: {
-            //     paddingLeft: 20,
-            //   },
-            // }}
-
             screenOptions={({ route }) => ({
               tabBarIcon: ({ focused, color, size }) => {
                 if (route.name === 'Classroom') {
                   return (
                     <Ionicons
-                      name={
-                        focused
-                          ? 'ios-home'
-                          : 'ios-home'
-                      }
+                      name={ focused ? 'ios-home' : 'ios-home' }
                       size={size}
                       color={color}
+                      
                     />
                   );
                 } else if (route.name === 'Videos') {
                   return (
                     <Ionicons
-                      name={focused ? 'ios-list' : 'ios-videocam'}
+                      name={focused ? 'ios-videocam' : 'ios-videocam'}
                       size={size}
                       color={color}
                     />
@@ -71,7 +57,7 @@ const RootStack = () => {
                 } else if (route.name === 'Stream') {
                   return (
                     <Ionicons
-                      name={focused ? 'ios-list' : 'ios-film'}
+                      name={focused ? 'ios-film' : 'ios-film'}
                       size={size}
                       color={color}
                     />
@@ -79,7 +65,7 @@ const RootStack = () => {
                 } else if (route.name === 'Profile') {
                   return (
                     <Ionicons
-                      name={focused ? 'ios-list' : 'person'}
+                      name={focused ? 'ios-person' : 'person'}
                       size={size}
                       color={color}
                     />
@@ -92,14 +78,15 @@ const RootStack = () => {
               <Tabs.Screen options={{ headerTintColor: primary, }}name="Classroom" component={Classes}/>
             ) : (
               <>
-                <Tabs.Screen name="Login" component={Login} />
-                <Tabs.Screen name="Signup" component={Signup} />
+                {/* <Tabs.Screen name="Login" component={Login} /> */}
+                {/* <Tabs.Screen name="Signup" component={Signup} /> */}
               </>
             )}
+            {/* <Tabs.Screen name="Classroom" component={Classes} /> */}
             <Tabs.Screen name="Stream" component={Streaming}/>
             <Tabs.Screen name="Videos" component={Videos}/>
-
-            <Tabs.Screen name="Profile" component={Welcome} />
+            {/* <Tabs.Screen name="Profile" component={Welcome} /> */}
+            
           </Tabs.Navigator>
         </NavigationContainer>
       )}
