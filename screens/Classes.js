@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { StyleSheet, FlatList, Text, View, Image, StatusBar, SafeAreaView,TouchableOpacity } from 'react-native';
+import { StyleSheet, FlatList, Text, View, Image, StatusBar, SafeAreaView,TouchableOpacity, Appbar, Alert } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
+
 
 const DATA = [
   {
@@ -27,6 +28,18 @@ const DATA = [
     "theme": "Lesson Theme",
     "photo": "https://images.unsplash.com/photo-1540593463874-59835505e99d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
   },
+  {
+    "id": "5",
+    "name": "OCEANS 5",
+    "theme": "Lesson Theme",
+    "photo": "https://images.unsplash.com/photo-1540593463874-59835505e99d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+  },
+  {
+    "id": "6",
+    "name": "OCEANS 6",
+    "theme": "Lesson Theme",
+    "photo": "https://images.unsplash.com/photo-1540593463874-59835505e99d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+  },
 ]
 
 
@@ -38,9 +51,10 @@ const Item = ({title}) => (
 
 
 
-export default function Classes() {
+export default function Classes({navigation}) {
 
   return (
+    
     <View style={styles.container}>
       <FlatList
         data={DATA}
@@ -48,7 +62,8 @@ export default function Classes() {
         keyExtractor={item => item.id}
         renderItem={({ item, index }) => {
           return (
-            <View style={styles.listItem}>
+            <TouchableOpacity onPress={() => navigation.navigate('Stream')} style={styles.listItem}>
+              
               <Image source={{uri:item.photo}}  style={styles.picture} />
               <View style={{alignItems:"center",flex:1}}>
                 <Text style={styles.title}>{item.name}</Text>
@@ -57,7 +72,7 @@ export default function Classes() {
               {/* <TouchableOpacity style={{height:50,width:50, justifyContent:"center",alignItems:"center"}}>
                 <Text style={{color:"green"}}>Call</Text>
               </TouchableOpacity> */}
-            </View>
+            </TouchableOpacity>
           )
         }}
       />
