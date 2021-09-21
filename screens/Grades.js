@@ -10,11 +10,16 @@ const DATA = [
     },
     {
         "id": "2",
-        "grade": "Grade: 1 - 4",
+        "grade": "Grade: 1 - 3",
     },
     {
         "id": "3",
-        "grade": "Grade: 5 - 7",
+        "grade": "Grade: 4 - 5",
+    },
+
+    {
+      "id": "4",
+      "grade": "Grade: 6 - 7",
     },
 ]
 
@@ -27,14 +32,14 @@ const Item = ({title}) => (
 export default function Grades({navigation}) {
     return (
     
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
           <FlatList
             data={DATA}
             renderItem={({ item }) => <Item item={item}/>}
             keyExtractor={item => item.id}
             renderItem={({ item, index }) => {
               return (
-                <TouchableOpacity onPress={() => navigation.navigate('Classroom')} style={styles.listItem}>
+                <TouchableOpacity onPress={() => navigation.navigate('Themes')} style={styles.listItem}>
                   
                   <Image source={{uri:item.photo}}  style={styles.picture} />
                   <View style={{alignItems:"center",flex:1}}>
@@ -44,7 +49,7 @@ export default function Grades({navigation}) {
               )
             }}
           />
-        </View>
+        </SafeAreaView>
     );
 }
 
@@ -52,7 +57,10 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#F7F7F7',
-      marginTop:200
+      paddingTop: 20,
+      justifyContent: 'center',
+      // alignItems: 'center',
+
     },
     listItem:{
       margin:10,
