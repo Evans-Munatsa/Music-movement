@@ -84,7 +84,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F7F7F7',
-    marginTop:80
+    // marginTop:80
+    paddingTop: 20,
   },
   listItem:{
     margin:10,
@@ -110,5 +111,5 @@ const styles = StyleSheet.create({
     width:150,
     height:100,
     borderRadius:5
-  }
+  },
 });

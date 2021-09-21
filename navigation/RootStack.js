@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ColorSchemeName } from 'react-native';
+import { ColorSchemeName, Dimensions } from 'react-native';
 
 //colors
 import { Colors } from '../components/styles';
@@ -13,7 +13,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
-// screens
+// screens imports
 import Login from '../screens/Login';
 import Signup from '../screens/Signup';
 import Welcome from '../screens/Welcome';
@@ -22,80 +22,128 @@ import Streaming from '../screens/Stream';
 import Videos from '../screens/Videos'; 
 import Grades from '../screens/Grades';
 
+const fullScreenWidth = Dimensions.get('window').width;
 
-const Tabs = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 // credentials context
 import { CredentialsContext } from '../components/CredentialsContext';
 import { Tab } from 'react-native-elements/dist/tab/Tab';
 
-const RootStack = () => {
-  return (
-    <CredentialsContext.Consumer>
-      {({ storedCredentials }) => (
-        <NavigationContainer style={{ backgroundColor: 'red' }}>
-          <Tabs.Navigator
-            screenOptions={({ route }) => ({
-              tabBarIcon: ({ focused, color, size }) => {
-                if (route.name === 'Classroom') {
-                  return (
-                    <Ionicons
-                      name={ focused ? 'ios-home' : 'ios-home' }
-                      size={size}
-                      color={color}
-                      
-                    />
-                  );
-                } else if (route.name === 'Videos') {
-                  return (
-                    <Ionicons
-                      name={focused ? 'ios-videocam' : 'ios-videocam'}
-                      size={size}
-                      color={color}
-                    />
-                  );
-                } else if (route.name === 'Stream') {
-                  return (
-                    <Ionicons
-                      name={focused ? 'ios-film' : 'ios-film'}
-                      size={size}
-                      color={color}
-                    />
-                  );
-                } else if (route.name === 'Profile') {
-                  return (
-                    <Ionicons
-                      name={focused ? 'ios-person' : 'person'}
-                      size={size}
-                      color={color}
-                    />
-                  );
-                }
-              },
-            })}
-          >
-            {storedCredentials ? (
-              <Tabs.Screen options={{ headerTintColor: primary, }}name="Classroom" component={Classes}/>
-            ) : (
-              <>
-                {/* <Tabs.Screen name="Login" component={Login} /> */}
-                {/* <Tabs.Screen name="Signup" component={Signup} /> */}
-              </>
-            )}
-            {/* <Tabs.Screen name="Classroom" component={Classes} /> */}
-            <Tabs.Screen name="Stream" component={Streaming}/>
-            <Tabs.Screen name="Videos" component={Videos}/>
-            <Tabs.Screen name="Grades" component={Grades}/>
+// function HomeStackScreen() {
+//   return (
+//     <Stack.Navigator>
+//       <Stack.Screen name="Profile" component={Welcome}/>
+//     </Stack.Navigator>
+//   )
+// }
 
-            {/* <Tabs.Screen name="Profile" component={Welcome} /> */}
+function AboutStackScreen() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="About" component={Welcome}/>
+    </Stack.Navigator>
+  )
+}
+
+function HomeStackScreen() {
+  return (
+    <Stack.Navigator screenOptions={{headerTitleAlign: 'center', headerTitleStyle: {fontWeight: "200", fontSize: 30}}}>
+      <Stack.Screen name="Grades" component={Grades}/>
+    </Stack.Navigator>
+  )
+}
+
+function ClassromStackScreen() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Themes" component={Classes}/>
+    </Stack.Navigator>
+  )
+}
+
+function VideoStackScreen() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Videos" component={Videos}/>
+    </Stack.Navigator>
+  )
+}
+
+
+{/* Bottom Tabs navigation */}
+const Tabs = createBottomTabNavigator();
+export default function TabsNavigation(props) {
+// const TabsNavigation = () => {
+  return (
+    <NavigationContainer style={{ backgroundColor: 'red' }}>
+      <Tabs.Navigator
+        screenOptions={({ route }) => ({
+          headerTitle: () => <Text>Header</Text>,
+          tabBarIcon: ({ focused, color, size }) => {
+            if (route.name === 'Grades') {
+              return (
+                <Ionicons
+                  name={ focused ? 'home' : 'home-outline' }
+                  size={size}
+                  color={color}    
+                />
+              );
+            } else if (route.name === 'Themes') {
+              return (
+                <Ionicons
+                  name={focused ? 'ios-film' : 'ios-film'}
+                  size={size}
+                  color={color}
+                />
+              );
+            }else if (route.name === 'Videos') {
+              return (
+                <Ionicons
+                  name={focused ? 'ios-videocam' : 'ios-videocam'}
+                  size={size}
+                  color={color}
+                />
+              );
+            }
+             else if (route.name === 'Stream') {
+              return (
+                <Ionicons
+                  name={focused ? 'ios-film' : 'ios-film'}
+                  size={size}
+                  color={color}
+                />
+              );
+            } else if (route.name === 'Profile') {
+              return (
+                <Ionicons
+                  name={focused ? 'ios-person' : 'person'}
+                  size={size}
+                  color={color}
+                />
+              );
+            }
+          },
+      })}
+      tabBarOptions={{
+        activeTintColor: 'blue',
+        inactiveTintColor: 'black',
+        labelStyle: {fontSize: 14},
+        style: {width: fullScreenWidth}
+      }}>
+
+      <Tabs.Screen name="Grades" component={HomeStackScreen}/>    
+      <Tabs.Screen name="Themes" component={ClassromStackScreen} />
+      {/* <Tabs.Screen name="Videos" component={VideoStackScreen}/> */}
+      {/* <Tabs.Screen name="About" component={AboutStackScreen}/> */}
+      
+
+      <Tabs.Screen name="Profile" component={Welcome} />
             
-          </Tabs.Navigator>
-        </NavigationContainer>
-      )}
-    </CredentialsContext.Consumer>
+      </Tabs.Navigator>
+    </NavigationContainer>
+    
   );
 };
 
-export default RootStack;
 
