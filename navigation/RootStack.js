@@ -56,7 +56,7 @@ function HomeStackScreen() {
 
 function ClassromStackScreen() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerTitleAlign: 'center', headerTitleStyle: {fontWeight: "200", fontSize: 30}}}>
       <Stack.Screen name="Themes" component={Classes}/>
     </Stack.Navigator>
   )
@@ -64,8 +64,16 @@ function ClassromStackScreen() {
 
 function VideoStackScreen() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerTitleAlign: 'center', headerTitleStyle: {fontWeight: "200", fontSize: 30}}}>
       <Stack.Screen name="Videos" component={Videos}/>
+    </Stack.Navigator>
+  )
+}
+
+function ProfileStackScreen() {
+  return (
+    <Stack.Navigator screenOptions={{headerTitleAlign: 'center', headerTitleStyle: {fontWeight: "200", fontSize: 30}}}>
+      <Stack.Screen name="Profile" component={Welcome}/>
     </Stack.Navigator>
   )
 }
@@ -138,7 +146,7 @@ export default function TabsNavigation(props) {
       {/* <Tabs.Screen name="About" component={AboutStackScreen}/> */}
       
 
-      <Tabs.Screen name="Profile" component={Welcome} />
+      <Tabs.Screen name="Profile" component={ProfileStackScreen} />
             
       </Tabs.Navigator>
     </NavigationContainer>
